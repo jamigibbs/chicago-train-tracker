@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "chicagotraintracker",
+    "description": "A very interesting project.",
+    "slug": "chicagotraintracker",
+    "privacy": "public",
+    "sdkVersion": "27.0.0",
+    "platforms": ["ios"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.jamigibbs.chicagotraintracker",
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyDovPopZ6OzTJgp6ZOp6I5FuujyXS7oi8Y"
+      }
+    }
+  }
+}
