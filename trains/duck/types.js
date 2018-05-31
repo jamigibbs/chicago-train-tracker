@@ -1,0 +1,5 @@
+const GOT_RED_LINE_ROUTE = 'GOT_RED_LINE_ROUTE'
+
+export default {
+  GOT_RED_LINE_ROUTE
+}

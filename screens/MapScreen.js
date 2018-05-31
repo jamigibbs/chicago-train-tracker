@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native'
-import { TrainMap } from '../components'
+import { TrainMap } from '../trains'
 
 const styles = StyleSheet.create({
   container: {

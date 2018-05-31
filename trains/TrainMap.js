@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet, View, Text } from 'react-native'
 import { MapView } from 'expo'
 import { MapStyle } from '../assets/styles'
-import { fetchRedLineRoute } from '../store'
-import { redLineStations, defaultRegion } from '../assets/data/stations'
+import { trainThunks } from './duck'
+import { redLineStations, defaultRegion } from './data/stations'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,15 +12,15 @@ const styles = StyleSheet.create({
   }
 })
 
-export class TrainMap extends React.Component {
+export class TrainMap extends Component {
 
   componentDidMount(){
-    this.props.getRedLineRoute()
+    this.props.fetchRedLineRoute()
   }
 
   render() {
     const { PROVIDER_GOOGLE, Marker, Polyline } = MapView
-
+    const redLineRoute = this.props.redLineRoute
     return (
       <MapView
         style={styles.container}
@@ -31,9 +31,9 @@ export class TrainMap extends React.Component {
       >
 
         {
-          this.props.redLineRoute[0] &&
+          redLineRoute &&
           <Polyline
-            coordinates={this.props.redLineRoute[0]}
+            coordinates={redLineRoute}
             strokeColor="#E00001"
             strokeWidth={4}
           />
@@ -57,14 +57,14 @@ export class TrainMap extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    redLineRoute: state.transitRoutes.red
+    redLineRoute: state.trains.redLineRoute
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getRedLineRoute: () => {
-      dispatch(fetchRedLineRoute())
+    fetchRedLineRoute: () => {
+      dispatch(trainThunks.fetchRedLineRoute())
     }
   }
 }
