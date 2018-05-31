@@ -11,6 +11,15 @@ const redLineReducer = (state = [], action) => {
   }
 }
 
+const brownLineReducer = (state = [], action) => {
+  switch (action.type) {
+    case types.GOT_BROWN_LINE_ROUTE:
+      return action.routes
+    default:
+      return state
+  }
+}
+
 const initialRouteState = {
   red: false,
   brown: false,
@@ -28,6 +37,7 @@ const toggleTrainRouteReducer = (state = initialRouteState, action) => {
 
 const reducer = combineReducers({
   redLineRoute: redLineReducer,
+  brownLineRoute: brownLineReducer,
   routeToggle: toggleTrainRouteReducer
 })
 
