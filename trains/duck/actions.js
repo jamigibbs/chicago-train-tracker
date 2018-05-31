@@ -7,6 +7,15 @@ const gotRedLineRouteFromGoogle = (routes) => {
   }
 }
 
+const toggleTrainRouteView = (color, bool) => {
+  return {
+    type: types.TOGGLED_TRAIN_ROUTE,
+    color,
+    bool
+  }
+}
+
 export default {
-  gotRedLineRouteFromGoogle
+  gotRedLineRouteFromGoogle,
+  toggleTrainRouteView
 }

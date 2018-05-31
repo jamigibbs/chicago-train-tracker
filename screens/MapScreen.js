@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native'
-import { TrainMap } from '../trains'
+import { StyleSheet, View } from 'react-native'
+import { TrainMap, MultiSelectTrains } from '../trains'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,6 +18,7 @@ export default class MapScreen extends React.Component {
     return (
       <View style={styles.container}>
         <TrainMap />
+        <MultiSelectTrains />
       </View>
     );
   }
