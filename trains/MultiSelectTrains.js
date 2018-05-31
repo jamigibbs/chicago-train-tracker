@@ -44,10 +44,10 @@ export class MultiSelectTrains extends Component {
         />
         <Switch
           style={styles.switch}
-          onValueChange={ () => { this.toggleSwitch('purple') } }
-          value={ this.props.routeToggle.purple }
-          tintColor="#9B28B0"
-          onTintColor="#9B28B0"
+          onValueChange={ () => { this.toggleSwitch('blue') } }
+          value={ this.props.routeToggle.blue }
+          tintColor="#42A5F5"
+          onTintColor="#42A5F5"
         />
       </View>
     )

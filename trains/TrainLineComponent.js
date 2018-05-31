@@ -3,6 +3,7 @@ import { MapView } from 'expo'
 
 const TrainLineComponent = ( {coord, color, width} ) => {
   const { Polyline, Marker } = MapView
+  console.log('coord', coord)
   return (
     <Polyline
       coordinates={coord}

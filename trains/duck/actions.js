@@ -14,6 +14,13 @@ const gotBrownLineRouteFromGoogle = (routes) => {
   }
 }
 
+const gotBlueLineRouteFromGoogle = (routes) => {
+  return {
+    type: types.GOT_BLUE_LINE_ROUTE,
+    routes
+  }
+}
+
 const toggleTrainRouteView = (color, bool) => {
   return {
     type: types.TOGGLED_TRAIN_ROUTE,
@@ -25,5 +32,6 @@ const toggleTrainRouteView = (color, bool) => {
 export default {
   gotRedLineRouteFromGoogle,
   gotBrownLineRouteFromGoogle,
+  gotBlueLineRouteFromGoogle,
   toggleTrainRouteView
 }

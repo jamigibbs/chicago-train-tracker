@@ -19,18 +19,19 @@ export class TrainMap extends Component {
   componentDidMount(){
     this.props.fetchRedLineRoute()
     this.props.fetchBrownLineRoute()
+    this.props.fetchBlueLineRoute()
   }
 
   render() {
     const { PROVIDER_GOOGLE, Marker, Polyline } = MapView
-    const { redLineRoute, brownLineRoute } = this.props
+    const { routeToggle, redLineRoute, brownLineRoute, blueLineRoute } = this.props
+
     return (
       <MapView
         style={styles.container}
         initialRegion={defaultRegion}
         provider={PROVIDER_GOOGLE}
         customMapStyle={MapStyle}
-        transitLayer
       >
 
         {
@@ -50,7 +51,19 @@ export class TrainMap extends Component {
           <View>
             <TrainLineComponent
               coord={brownLineRoute}
-              color="#6D4C41"
+              color="#9C786C"
+              width={4}
+            />
+            {/* <TrainStationsComponent stations={redLineStations} /> */}
+          </View>
+        }
+
+        {
+          this.props.routeToggle.blue &&
+          <View>
+            <TrainLineComponent
+              coord={blueLineRoute}
+              color="#42A5F5"
               width={4}
             />
             {/* <TrainStationsComponent stations={redLineStations} /> */}
@@ -67,6 +80,7 @@ const mapStateToProps = (state) => {
   return {
     redLineRoute: state.trains.redLineRoute,
     brownLineRoute: state.trains.brownLineRoute,
+    blueLineRoute: state.trains.blueLineRoute,
     routeToggle: state.trains.routeToggle
   }
 }
@@ -78,6 +92,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     fetchBrownLineRoute: () => {
       dispatch(trainThunks.fetchBrownLineRoute())
+    },
+    fetchBlueLineRoute: () => {
+      dispatch(trainThunks.fetchBlueLineRoute())
     }
   }
 }

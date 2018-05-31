@@ -1,7 +1,7 @@
 export const defaultRegion = {
   latitude: 41.881832,
   longitude: -87.623177,
-  latitudeDelta: 0.0922,
+  latitudeDelta: 0.19,
   longitudeDelta: 0.0421
 }
 
