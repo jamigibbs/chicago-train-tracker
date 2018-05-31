@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import axios from 'axios'
 import { decode } from './utils'
+import app from './app.json';
 
 const GOT_RED_LINE_ROUTE = 'GOT_RED_LINE_ROUTE'
 
@@ -13,7 +14,7 @@ const gotRedLineRouteFromGoogle = (routes) => {
 }
 
 export const fetchRedLineRoute = () => {
-  const API_KEY = 'AIzaSyAYTe89LlLWccW24ili2gNNcLGEUAVAy4U'
+  const API_KEY = app.expo.ios.config.googleMapsApiKey
   const mode = 'transit'
   const origin = 'place_id:ChIJY_Cw_xTQD4gRM0qzmGJcCcU'
   const destination = 'place_id:ChIJAxJFPeQlDogRXVsdIvn1WxM';

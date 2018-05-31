@@ -22,10 +22,10 @@
     ],
     "ios": {
       "bundleIdentifier": "com.jamigibbs.chicagotraintracker",
-      "supportsTablet": true,
       "config": {
         "googleMapsApiKey": "AIzaSyDovPopZ6OzTJgp6ZOp6I5FuujyXS7oi8Y"
-      }
+      },
+      "supportsTablet": false
     }
   }
 }
