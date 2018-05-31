@@ -5,6 +5,8 @@ import { MapView } from 'expo'
 import { MapStyle } from '../assets/styles'
 import { trainThunks } from './duck'
 import { redLineStations, defaultRegion } from './data/stations'
+import TrainLineComponent from './TrainLineComponent'
+import TrainStationsComponent from './TrainStationsComponent'
 
 const styles = StyleSheet.create({
   container: {
@@ -31,23 +33,16 @@ export class TrainMap extends Component {
       >
 
         {
-          redLineRoute &&
-          <Polyline
-            coordinates={redLineRoute}
-            strokeColor="#E00001"
-            strokeWidth={4}
-          />
+          redLineRoute && this.props.routeToggle.red &&
+          <View>
+            <TrainLineComponent
+              coord={redLineRoute}
+              color="#E00001"
+              width={4}
+            />
+            <TrainStationsComponent stations={redLineStations} />
+          </View>
         }
-
-        {redLineStations.map((marker) => (
-          <Marker
-            key={marker.id}
-            coordinate={marker.latlng}
-            title={marker.title}
-            description={marker.description}
-            image={require('../assets/images/circle.png')}
-          />
-        ))}
 
       </MapView>
     )
@@ -57,7 +52,8 @@ export class TrainMap extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    redLineRoute: state.trains.redLineRoute
+    redLineRoute: state.trains.redLineRoute,
+    routeToggle: state.trains.routeToggle
   }
 }
 
