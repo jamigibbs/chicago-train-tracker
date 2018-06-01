@@ -5,8 +5,6 @@ import { MapView } from 'expo'
 import { MapStyle } from '../assets/styles'
 import { trainThunks } from './duck'
 import { redLineStations, defaultRegion } from './data/stations'
-import TrainLineComponent from './TrainLineComponent'
-import TrainStationsComponent from './TrainStationsComponent'
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +22,7 @@ export class TrainMap extends Component {
 
   render() {
     const { PROVIDER_GOOGLE, Marker, Polyline } = MapView
-    const { routeToggle, redLineRoute, brownLineRoute, blueLineRoute } = this.props
+    const { routeToggle, coordinates } = this.props
 
     return (
       <MapView
@@ -34,40 +32,28 @@ export class TrainMap extends Component {
         customMapStyle={MapStyle}
       >
 
-        {
-          this.props.routeToggle.red &&
-          <View>
-            <TrainLineComponent
-              coord={redLineRoute}
-              color="#E00001"
-              width={4}
-            />
-            <TrainStationsComponent stations={redLineStations} />
-          </View>
+        { routeToggle.red &&
+          <Polyline
+            coordinates={routeToggle.red ? coordinates.red : null}
+            strokeColor="#E00001"
+            strokeWidth={4}
+          />
         }
 
-        {
-          this.props.routeToggle.brown &&
-          <View>
-            <TrainLineComponent
-              coord={brownLineRoute}
-              color="#9C786C"
-              width={4}
-            />
-            {/* <TrainStationsComponent stations={redLineStations} /> */}
-          </View>
+        { routeToggle.brown &&
+          <Polyline
+            coordinates={routeToggle.brown ? coordinates.brown : null}
+            strokeColor="#9C786C"
+            strokeWidth={4}
+          />
         }
 
-        {
-          this.props.routeToggle.blue &&
-          <View>
-            <TrainLineComponent
-              coord={blueLineRoute}
-              color="#42A5F5"
-              width={4}
-            />
-            {/* <TrainStationsComponent stations={redLineStations} /> */}
-          </View>
+        { routeToggle.blue &&
+          <Polyline
+            coordinates={routeToggle.blue ? coordinates.blue : null}
+            strokeColor="#42A5F5"
+            strokeWidth={4}
+          />
         }
 
       </MapView>
@@ -78,10 +64,8 @@ export class TrainMap extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    redLineRoute: state.trains.redLineRoute,
-    brownLineRoute: state.trains.brownLineRoute,
-    blueLineRoute: state.trains.blueLineRoute,
-    routeToggle: state.trains.routeToggle
+    routeToggle: state.trains.routeToggle,
+    coordinates: state.trains.coordinates
   }
 }
 
