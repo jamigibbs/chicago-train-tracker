@@ -6,6 +6,7 @@ import app from '../../app.json';
 const gotRedLineRouteFromGoogle = actions.gotRedLineRouteFromGoogle
 const gotBrownLineRouteFromGoogle = actions.gotBrownLineRouteFromGoogle
 const gotBlueLineRouteFromGoogle = actions.gotBlueLineRouteFromGoogle
+const countGoogleMapsApiCalls = actions.countGoogleMapsApiCalls
 
 const GOOGLE_DIRECTIONS_URL = 'https://maps.googleapis.com/maps/api/directions/json'
 const API_KEY = app.expo.ios.config.googleMapsApiKey
@@ -20,6 +21,7 @@ const routeThunkCreator = (origin, destination, action) => {
       const decodedData = decode(data.routes[0].overview_polyline.points)
       const actionResponse = action(decodedData)
       dispatch(actionResponse)
+      dispatch(countGoogleMapsApiCalls())
     } catch (err) { console.error(err) }
   }
 }

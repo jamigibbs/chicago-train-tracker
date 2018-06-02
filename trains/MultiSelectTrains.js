@@ -26,35 +26,38 @@ export class MultiSelectTrains extends Component {
   }
 
   render(){
+    const { routeToggle, apiCalls } = this.props
     return (
       <View style={styles.container}>
         <Switch
           style={styles.switch}
           onValueChange={ () => { this.toggleSwitch('red') } }
-          value={ this.props.routeToggle.red }
+          value={ routeToggle.red }
           tintColor="#E00001"
           onTintColor="#E00001"
         />
         <Switch
           style={styles.switch}
           onValueChange={ () => { this.toggleSwitch('brown') } }
-          value={ this.props.routeToggle.brown }
+          value={ routeToggle.brown }
           tintColor="#8D6E63"
           onTintColor="#8D6E63"
         />
         <Switch
           style={styles.switch}
           onValueChange={ () => { this.toggleSwitch('blue') } }
-          value={ this.props.routeToggle.blue }
+          value={ routeToggle.blue }
           tintColor="#42A5F5"
           onTintColor="#42A5F5"
         />
+        <Text>Google API Calls: {routeToggle.apiCalls}</Text>
       </View>
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.trains)
   return {
     routeToggle: state.trains.routeToggle
   }

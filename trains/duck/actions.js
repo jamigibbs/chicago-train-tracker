@@ -29,9 +29,16 @@ const toggleTrainRouteView = (color, bool) => {
   }
 }
 
+const countGoogleMapsApiCalls = () => {
+  return {
+    type: types.COUNT_GOOGLE_MAPS_API_CALLS
+  }
+}
+
 export default {
   gotRedLineRouteFromGoogle,
   gotBrownLineRouteFromGoogle,
   gotBlueLineRouteFromGoogle,
-  toggleTrainRouteView
+  toggleTrainRouteView,
+  countGoogleMapsApiCalls
 }

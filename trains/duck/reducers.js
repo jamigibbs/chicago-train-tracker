@@ -30,16 +30,19 @@ const blueLineReducer = (state = [], action) => {
 }
 
 
-const initialRouteState = [
-  { red: false },
-  { brown: false },
-  { blue: false }
-]
+const initialRouteState = {
+  red: false,
+  brown: false,
+  blue: false,
+  apiCalls: 0
+}
 
 const toggleTrainRouteReducer = (state = initialRouteState, action) => {
   switch (action.type) {
     case types.TOGGLED_TRAIN_ROUTE:
       return {...state, [action.color]: action.bool}
+    case types.COUNT_GOOGLE_MAPS_API_CALLS:
+      return {...state, apiCalls: state.apiCalls + 1}
     default:
       return state
   }
